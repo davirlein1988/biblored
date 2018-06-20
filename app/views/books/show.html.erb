@@ -1,0 +1,21 @@
+<div class="jumbotron">
+	<img class="img-fluid rounded mx-auto d-block"" src= "<%= @book.cover_url%>" alt="image cover" width: "90%";>
+	
+	<fieldset>
+		<legend><h2><%= @book.title %></h2></legend>
+		<summary> ISBN: 
+			<%= @book.isbn %>
+			STATUS: 
+			<%= @book.status %>
+			<details>
+				<li class="list-group-item"> Written by <%= @book.author %></li>
+				<li class="list-group-item">Published :<%= @book.publication_date%></li>
+				<li class="list-group-item"><h4><%= @book.summary %></h4></li>
+			</details>
+		</summary>
+
+	</fieldset>
+	<button type="button" class="btn btn-secondary">
+		<a href="<%=edit_book_path(@book)%>">Edit </a>
+	</button>
+</div>

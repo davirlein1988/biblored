@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_18_171647) do
+ActiveRecord::Schema.define(version: 2018_06_20_210035) do
 
   create_table "books", force: :cascade do |t|
     t.integer "isbn"
@@ -20,6 +20,22 @@ ActiveRecord::Schema.define(version: 2018_06_18_171647) do
     t.text "cover_url"
     t.text "summary"
     t.text "status"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "library_id"
+  end
+
+  create_table "libraries", force: :cascade do |t|
+    t.text "name"
+    t.text "address"
+    t.text "shelves"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "library_users", force: :cascade do |t|
+    t.integer "library_id"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

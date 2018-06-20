@@ -1,0 +1,57 @@
+<%= form_for @book do |f| %>
+  <div class="form-group">
+  <div class="row">
+  	<div class="col-12 col-md-3"> 
+  		<h2>ISNB</h2>
+  	</div>
+  	<div class="col-12 col-md-9">
+    	<% f.label :book_isbn, class: "form-control" %>
+    	<%= f.text_field :isbn, class: "form-control", placeholder: "Enter Isbn Id" %>
+    	</div>
+    </div
+  </div>
+  <div class="form-group">
+  	<div class="row">
+  		<div class="col-12 col-md-3">
+  			<h2>Title</h2>
+  		</div>
+  		<div class="col-12 col-md-9">
+    		<% f.label :book_title, class: "form-control" %>
+    		<%= f.text_field :title, class: "form-control", placeholder: "Enter The title of the Book" %>
+    	</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+  	<div class="row">
+  		<div class="col-12 col-md-3">
+  			<h2>Author</h2>
+  		</div>
+  		<div class="col-12 col-md-9">
+    		<% f.label :book_author, class: "form-control" %>
+    		<%= f.text_field :author, class: "form-control", placeholder: "Enter The name of the writer" %>
+    	</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+  
+  <%= f.label :publication_date %> <%= f.date_select(:date, :order => [:month, :day, :year]) %>
+  </div>
+  <div class="form-group">
+  <label for="book_cover_url">Cover: </label><%= f.text_field :cover_url %>
+  </div>
+   <div class="form-group">
+  <label for="book-summary">Summary: </label><%= f.text_area :summary %>
+  </div>
+  <div class="form-group">
+  <label for="book_status">Status: </label><%= f.text_field :status %>
+  </div>
+  <div class="form-group">
+  <label for="book_cover_url">User_id: </label><%= f.text_field :user_id %>
+  </div>
+  <div class="form-group">
+   <%= f.select :library_id, options_for_select(Library.all.map {|l| [l.name, l.id]}) %>
+  </div>
+  <%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
