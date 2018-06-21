@@ -34,24 +34,69 @@
     </div>
   </div>
 
-  <div class="form-group">
-  
-  <%= f.label :publication_date %> <%= f.date_select(:date, :order => [:month, :day, :year]) %>
+    <div class="form-group">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <h2>                 </h2>
+      </div>
+      <div class="col-12 col-md-9">
+        <%= f.label :publication_date %> <%= f.date_select(:publication_date, :order => [:month, :day, :year], start_year: Date.today.year-200, end_year: Date.today.year) %>
+      </div>
+    </div>
   </div>
   <div class="form-group">
-  <label for="book_cover_url">Cover: </label><%= f.text_field :cover_url %>
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <h2>Cover URL</h2>
+      </div>
+      <div class="col-12 col-md-9">
+        <% f.label :cover_url, class: "form-control" %>
+        <%= f.text_field :cover_url, class: "form-control", placeholder: "Enter The address for the cover image" %>
+      </div>
+    </div>
   </div>
-   <div class="form-group">
-  <label for="book-summary">Summary: </label><%= f.text_area :summary %>
+
+  <div class="form-group">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <h2>Summary</h2>
+      </div>
+      <div class="col-12 col-md-9">
+        <% f.label :summary, class: "form-control" %>
+        <%= f.text_area :summary, class: "form-control", placeholder: "Enter a brief description of the book" %>
+      </div>
+    </div>
+  <div class="form-group">
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <h2>Status: </h2>
+      </div>
+      <div class="col-12 col-md-9">
+        <% f.label :status, class: "form-control" %>
+        <%= f.text_field :status, class: "form-control"%>
+      </div>
+    </div>
   </div>
   <div class="form-group">
-  <label for="book_status">Status: </label><%= f.text_field :status %>
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <h2>User Id: </h2>
+      </div>
+      <div class="col-12 col-md-9">
+        <% f.label :user_id, class: "form-control" %>
+        <%= f.text_field :user_id, class: "form-control", placeholder: "Leave blank if book is in library" %>
+      </div>
+    </div>
   </div>
   <div class="form-group">
-  <label for="book_cover_url">User_id: </label><%= f.text_field :user_id %>
-  </div>
-  <div class="form-group">
-   <%= f.select :library_id, options_for_select(Library.all.map {|l| [l.name, l.id]}) %>
+    <div class="row">
+      <div class="col-12 col-md-3">
+        <h2>Library Location: </h2>
+      </div>
+      <div class="col-12 col-md-9">
+        <%= f.select :library_id, options_for_select(Library.all.map {|l| [l.name, l.id]}) %>
+      </div>
+    </div>
   </div>
   <%= f.submit "Submit", class: "btn btn-primary" %>
 <% end %>

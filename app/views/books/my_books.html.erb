@@ -1,0 +1,19 @@
+<div class="jumbotron">
+	<img class="img-fluid rounded mx-auto d-block"" src= "<%= @book.cover_url%>" alt="image cover" width: "90%";>
+	
+	<fieldset>
+		<legend><h2><%= @book.title %></h2></legend>
+		<summary> ISBN: 
+			<%= @book.isbn %>
+			<details>
+				<ul>
+					<li class="list-group-item"> Written by <%= @book.author %></li>
+					<li class="list-group-item">Published :<%= @book.publication_date%></li>
+					<li class="list-group-item"><h4> Return date<%= @book.summary %></h4></li>
+					<li><%= button_to "Extend", "/books/#{@book.id}/renew", :method => :put %></li>
+				</ul>
+			</details>
+		</summary>
+
+	</fieldset>
+</div>

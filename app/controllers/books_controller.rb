@@ -1,7 +1,8 @@
 class BooksController < ApplicationController
 
 	def index
-		@books = Book.all 
+		@books = Book.all
+		@admin = user_signed_in? && current_user.admin 
 	end
 
 	def show
@@ -30,6 +31,22 @@ class BooksController < ApplicationController
 		@book = Book.find(params[:id])
 		@book.destroy
 		redirect_to "/books"
+	end
+
+	def borrow
+		book = Book.find(params[:id])
+		if user_signed_in? and book.status.nil? or book.status = "available"
+			book.update!(status: "borrowed", user_id: current_user.id)
+		# elsif user_signed_in? and book.status = "borrowed"
+		# 	book.
+		else 
+				
+		end
+		redirect_to "/books"
+	end
+
+	def renew
+		
 	end
 
 	private
