@@ -15,7 +15,29 @@
 		</summary>
 
 	</fieldset>
-	<button type="button" class="btn btn-secondary">
-		<a href="<%=edit_book_path(@book)%>">Edit </a>
-	</button>
+	
+		<% if @admin %>
+		    <div class="row">
+            	<div class="col-3"> 
+                	<button class="btn btn-success"><%= link_to "new book", "/books/new" %></button>         
+              	</div>
+              	<div class="col-3">
+                	<button class="btn btn-info"><%= link_to 'Edit Book', edit_book_path(@book.id) %> </button>
+              	</div>
+              	<div class="col-3">
+                	<%= button_to "delete", @book, :method => :delete, class: "btn btn-danger" %>
+                </div>
+                
+                	<% if @admin && @book.status != "available" or @book.status != nil %>		            
+		              	<div class="col-3">
+		                	<%= button_to "return", @book, :method => :return, class: "btn btn-success" %>          
+		              	</div>
+		            <% end %>          
+		              	             	
+		    </div>
+
+        <% elsif @borrow %>
+        	<%= button_to "borrow", "/books/#{@book.id}/borrow", :method => :put, class: "btn btn-info" %>
+        <% end %>
+	
 </div>

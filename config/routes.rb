@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   root "books#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :libraries
-  resources :books
+    resources :books do 
+  	put 'borrow'
+	put 'renew'
+	get 'search', on: :collection
+end
+	
 
-	put 'books/:id/borrow', to: 'books#borrow'
-	put 'books/:id/renew', to: 'books#renew'
   
 end

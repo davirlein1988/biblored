@@ -64,6 +64,8 @@
       </body>
     </section>
   </div>
-<h1>Books Available</h1>
+<%= render "my_books" unless @my_books.empty?%>
+
 <%= render "borrow" %>
+<%= render "footer" %>
 

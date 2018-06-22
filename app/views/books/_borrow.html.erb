@@ -1,33 +1,36 @@
-<div class="images_cover">
-  <div class="row">
-  <% @books.each do |book| %>
-    <div class="col-12 col-md-6 col-lg-4">
-      <h3> <%= link_to(book.title, "/books/#{book.id}") %></h3>
-      <img src="<%= book.cover_url %>" class="img-responsive" width="90%" height="auto">
-      <summary>
-        <details>
-         <div class="row">
-           <div class="col-12"><%= book.summary %></div>
-         </div>
-          <% if @admin %>
-            <div class="row">
-              <div class="col-4"> 
-                <button class="btn btn-success"><%= link_to "new book", "/books/new" %></button>         
-              </div>
-              <div class="col-4">
-                <button class="btn btn-primary"><%= link_to 'Edit Book', edit_book_path(book.id) %> </button>
-              </div>
-              <div class="col-4">
-                <%= button_to "delete", book, :method => :delete, class: "btn btn-danger" %>          
-              </div>
-            </div> 
-          <%else %>
-            <%= button_to "borrow", "/books/#{book.id}/borrow", :method => :put, class: "btn btn-info" %>
-          <% end %> 
-          
-        </details>
-      </summary>  
+<div class="container" id="list-of-books">
+  <h1>Books Available</h1>
+  <div class="images_cover">
+    <div class="row">
+    <% @books.each do |book| %>
+      <div class="col-12 col-md-6 col-lg-4">
+        <h3> <%= link_to(book.title, "/books/#{book.id}") %></h3>
+        <img src="<%= book.cover_url %>" class="img-responsive" width="90%" height="auto">
+        <summary>
+          <details>
+           <div class="row">
+             <div class="col-12"><%= book.summary %></div>
+           </div>
+            <% if @admin %>
+              <div class="row">
+                <div class="col-4"> 
+                  <button class="btn btn-success"><%= link_to "new book", "/books/new" %></button>         
+                </div>
+                <div class="col-4">
+                  <button class="btn btn-primary"><%= link_to 'Edit Book', edit_book_path(book.id) %> </button>
+                </div>
+                <div class="col-4">
+                  <%= button_to "delete", book, :method => :delete, class: "btn btn-danger" %>          
+                </div>
+              </div> 
+            <%else %>
+              <%= button_to "borrow", "/books/#{book.id}/borrow", :method => :put, class: "btn btn-info" %>
+            <% end %> 
+            
+          </details>
+        </summary>  
+      </div>
+    <% end %>
     </div>
-  <% end %>
   </div>
 </div>
