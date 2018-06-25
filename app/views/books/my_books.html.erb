@@ -9,7 +9,7 @@
 				<ul>
 					<li class="list-group-item"> Written by <%= @book.author %></li>
 					<li class="list-group-item">Published :<%= @book.publication_date%></li>
-					<li class="list-group-item"><h4> Return date<%= @book.return_date %></h4></li>
+					<li class="list-group-item"><h4> Return date<%= @book.summary %></h4></li>
 					<li><%= button_to "Extend", "/books/#{@book.id}/renew", :method => :put %></li>
 				</ul>
 			</details>
