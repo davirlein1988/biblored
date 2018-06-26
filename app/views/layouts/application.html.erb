@@ -7,9 +7,19 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript">
+       $(function ()
+
+{ $("#myModal").modal({show:false });
+    </script>
   </head>
 
   <body>
+
+    <%= render "books/login_modal" %>
+
+    <%= render "books/sign_up_modal" %>
+    
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
@@ -18,6 +28,8 @@
     <% end %>
     <%= render "layouts/header" %>
 
+
     <%= yield %>
+
   </body>
 </html>

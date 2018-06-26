@@ -12,11 +12,12 @@ default: &default
 
 development:
   <<: *default
+  adapter: sqlite3
 
   database: biblored_development
   encoding: unicode
-  username: diego
-  password: milan123
+  username: lein
+  password: Darleida
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -24,13 +25,16 @@ development:
 test:
   <<: *default
   database: biblored_test
-  username: diego
-  password: milan123
+  username: lein
+  password: Darleida
   encoding: unicode
 
 production:
   <<: *default
+  adapter: postgresql
   database: biblored_production
-  username: diego
-  password: milan123
+  host: localhost
+  username: lein
+  password: Darleida
   encoding: unicode
+

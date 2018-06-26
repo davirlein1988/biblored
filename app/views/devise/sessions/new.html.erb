@@ -1,26 +1,29 @@
-<h2>Log in</h2>
+<div class="panel panel-default">
+<div class="panel-heading"> <strong><h3>Login</h3></strong>
+</div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<div class="panel-body jumbotron">
+<%= form_for(resource, as: resource_name, url: session_path(resource_name))  do |f|  %>
+    <div class="form-group">
+    <%= f.label :email, class: "col-md-3 control-label" %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+  <div class="form-group">
+    <%= f.label :password, class: "col-md-3 control-label" %><br />
+    <%= f.password_field :password, autocomplete: "off", class: "col-sm-6" %>
   </div>
 
   <% if devise_mapping.rememberable? -%>
-    <div class="field">
+    <div class="form-group">
       <%= f.check_box :remember_me %>
       <%= f.label :remember_me %>
     </div>
   <% end -%>
 
-  <div class="actions">
+  <div class="form-group">
     <%= f.submit "Log in" %>
   </div>
 <% end %>
-
+</div>
 <%= render "devise/shared/links" %>
