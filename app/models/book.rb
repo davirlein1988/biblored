@@ -1,4 +1,5 @@
 class Book < ApplicationRecord
+	searchkick
 	belongs_to :library
 
 	def user

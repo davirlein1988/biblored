@@ -63,7 +63,7 @@ class BooksController < ApplicationController
 
 	def search
 		if params[:search]
-			@books = Book.where("title LIKE ? OR author LIKE ?", "%#{params[:search]}%", "%#{params[:search]}%")
+			@books = Book.search(params[:search], operator: "or")
 		else
 			@books = Book.all
 		end

@@ -71,3 +71,4 @@ gem 'devise'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 gem "bootstrap-sass-rails", "~> 2.2.2.0"
+gem 'searchkick'
